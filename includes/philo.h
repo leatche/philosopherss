@@ -80,6 +80,6 @@ int		ft_check(char **av);
 void	ft_give_value(t_info *info, char **av, int ac);
 size_t	ft_strlen(const char *src);
 void	ft_error(char *s);
-int		ft_atoi(const char *str);
-
+long	ft_atoi(const char *str);
+int ft_get_int_value(pthread_mutex_t *mutex, int *value);
 #endif

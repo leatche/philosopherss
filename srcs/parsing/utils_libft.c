@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		i;
 	int		minus;
@@ -35,8 +35,6 @@ int	ft_atoi(const char *str)
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	if (result > INT_MAX || result < INT_MIN)
-		return (0);
 	return (result * minus);
 }
 

@@ -20,8 +20,11 @@ int	main(int ac, char **av)
 	{
 		info = malloc(sizeof(t_info));
 		info->timers = malloc(sizeof(t_time));
-		if (ft_parsing(ac, av, info) == -1)
+		if (ft_parsing(ac, av, info) == -1) {
+			free(info->timers);
+			free(info);
 			return (-1);
+		}
 		ft_executate_everything(info);
 		ft_free_everything(info);
 	}
