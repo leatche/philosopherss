@@ -15,8 +15,12 @@
 void	ft_take_fork(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
+	if (ft_get_int_value(&philo->timers->stop_m, &philo->timers->stop) == 1)
+		return ;
 	printf("%ld %d has taken a fork\n", ft_time(philo), philo->id);
 	pthread_mutex_lock(philo->left_fork);
+	if (ft_get_int_value(&philo->timers->stop_m, &philo->timers->stop) == 1)
+		return ;
 	printf("%ld %d has taken a fork\n", ft_time(philo), philo->id);
 }
 

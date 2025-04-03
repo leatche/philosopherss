@@ -37,7 +37,6 @@ void	*philo_dinner(void *arg)
 			break;
 		}
 		ft_sleeping(philo);
-		printf("%ld %d is thinking\n", ft_time(philo), philo->id);
 	}
 	now = get_time_in_ms() - philo->born_time;
 	printf("%ld %d died\n", now, philo->id);
@@ -48,16 +47,21 @@ void	ft_eat(t_philo *philo)
 {
 	ft_take_fork(philo);
 	pthread_mutex_lock(&philo->secure_meal);
-	printf("%ld %d is eating\n", ft_time(philo), philo->id);
 	philo->count_meal++;
 	philo->last_meal = get_time_in_ms();
 	pthread_mutex_unlock(&philo->secure_meal);
-	usleep(philo->timers->t_eat * 1000);
+	if (ft_get_int_value(&philo->timers->stop_m, &philo->timers->stop) == 1)
+		return ;
+	printf("%ld %d is eating\n", ft_time(philo), philo->id);
+	ft_usleep(philo->timers->t_eat * 100);
 	ft_drop_fork(philo);
 }
 
 void	ft_sleeping(t_philo *philo)
 {
+	if (ft_get_int_value(&philo->timers->stop_m, &philo->timers->stop) == 1)
+		return ;
 	printf("%ld %d is sleeping\n", ft_time(philo), philo->id);
-	usleep(philo->timers->t_sleep * 1000);
+	ft_usleep(philo->timers->t_sleep * 100);
+	printf("%ld %d is thinking\n", ft_time(philo), philo->id);
 }

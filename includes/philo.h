@@ -22,7 +22,8 @@
 # include <string.h>
 # include <limits.h>
 
-typedef struct s_time {
+typedef struct s_time
+{
 	long			t_die;
 	int				t_eat;
 	int				t_sleep;
@@ -31,7 +32,7 @@ typedef struct s_time {
 	pthread_mutex_t	stop_m;
 }		t_time;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int				id;
 	long			born_time;
@@ -44,7 +45,7 @@ typedef struct	s_philo
 }				t_philo;
 
 
-typedef struct	s_info
+typedef struct s_info
 {
 	t_time			*timers;
 	int				nb_philos;
@@ -72,7 +73,7 @@ void	ft_free_everything(t_info *info);
 void	ft_eat(t_philo *philo);
 void	ft_sleeping(t_philo *philo);
 void	*ft_check_death(t_info *info);
-// int		ft_check_life(t_info *info);
+void	ft_usleep(long mls);
 //parsing 
 int		ft_parsing(int ac, char **av, t_info *info);
 int		ft_check(char **av);
@@ -80,4 +81,5 @@ void	ft_give_value(t_info *info, char **av, int ac);
 size_t	ft_strlen(const char *src);
 void	ft_error(char *s);
 int		ft_atoi(const char *str);
+
 #endif

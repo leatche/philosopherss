@@ -45,3 +45,12 @@ void	ft_free_everything(t_info *info)
 	free(info->rooms);
 	free(info);
 }
+
+void	ft_usleep(long mls)
+{
+	int	a;
+
+	a = -1;
+	while (++a < 10)
+		usleep(mls);
+}
