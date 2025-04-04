@@ -19,7 +19,7 @@ int	ft_check_format(t_info *info)
 		ft_error("your fifth argument is not high enough ");
 		return (-1);
 	}
-	if (info->nb_philos < 2)
+	if (info->nb_philos <= 0)
 	{
 		ft_error("the number of philosophers is not high enough ");
 		return (-1);

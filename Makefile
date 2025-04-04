@@ -29,7 +29,7 @@ SRCS = $(SRCS_PARSING) $(SRCS_EXE)
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-FLAG = -Wall -Werror -Wextra -Iincludes -fsanitize=address -g3
+FLAG = -Wall -Werror -Wextra -Iincludes -g3 -fsanitize=address
 RM = @rm -f
 AR = ar rcs
 

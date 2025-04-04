@@ -46,11 +46,13 @@ void	ft_free_everything(t_info *info)
 	free(info);
 }
 
-void	ft_usleep(long mls)
+void	ft_usleep(t_philo *philo, long mls)
 {
-	int	a;
+	long startingTime;
 
-	a = -1;
-	while (++a < 10)
-		usleep(mls);
+	startingTime = get_time_in_ms();
+	while (is_running(philo) && get_time_in_ms() - startingTime < mls)
+	{
+		usleep(10);
+	}
 }

@@ -25,9 +25,9 @@
 typedef struct s_time
 {
 	long			t_die;
-	int				t_eat;
-	int				t_sleep;
-	int				numb_eat_required;
+	long			t_eat;
+	long			t_sleep;
+	long			numb_eat_required;
 	int				stop;
 	pthread_mutex_t	stop_m;
 }		t_time;
@@ -48,7 +48,7 @@ typedef struct s_philo
 typedef struct s_info
 {
 	t_time			*timers;
-	int				nb_philos;
+	long			nb_philos;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 	pthread_t		*rooms;
@@ -56,9 +56,7 @@ typedef struct s_info
 
 //execution
 int		ft_check_format(t_info *info);
-void	ft_executate_everything(t_info *info);
 void	ft_start_simulation(t_info *info);
-void	ft_init_values(t_info *info);
 int		ft_init_thread(t_info *info);
 int		ft_create_fork(t_info *info);
 int		ft_create_philosopher(t_info *info);
@@ -73,7 +71,7 @@ void	ft_free_everything(t_info *info);
 void	ft_eat(t_philo *philo);
 void	ft_sleeping(t_philo *philo);
 void	*ft_check_death(t_info *info);
-void	ft_usleep(long mls);
+void	ft_usleep(t_philo *philo, long mls);
 //parsing 
 int		ft_parsing(int ac, char **av, t_info *info);
 int		ft_check(char **av);
@@ -82,4 +80,6 @@ size_t	ft_strlen(const char *src);
 void	ft_error(char *s);
 long	ft_atoi(const char *str);
 int ft_get_int_value(pthread_mutex_t *mutex, int *value);
+void ft_talk(t_philo *philo, char *msg);
+int is_running(t_philo *philo);
 #endif

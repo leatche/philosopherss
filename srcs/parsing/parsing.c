@@ -67,6 +67,7 @@ int	ft_check(char **av)
 
 void	ft_give_value(t_info *info, char **av, int ac)
 {
+	info->timers->stop = 0;
 	info->nb_philos = ft_atoi(av[1]);
 	info->timers->t_die = ft_atoi(av[2]);
 	info->timers->t_eat = ft_atoi(av[3]);

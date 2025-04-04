@@ -12,12 +12,6 @@
 
 #include "philo.h"
 
-void	ft_init_values(t_info *info)
-{
-	info->philos->count_meal = 0;
-	info->philos->born_time = get_time_in_ms();
-}
-
 int	ft_init_thread(t_info *info)
 {
 	if (ft_create_fork(info) == -1)
@@ -37,7 +31,6 @@ int	ft_create_fork(t_info *info)
 {
 	int	i;
 
-	info->forks = malloc(sizeof(pthread_mutex_t) * info->nb_philos);
 	if (!info->forks)
 		return (-1);
 	i = -1;
@@ -50,7 +43,6 @@ int	ft_create_philosopher(t_info *info)
 {
 	int	i;
 
-	info->philos = malloc(sizeof(t_philo) * info->nb_philos);
 	if (!info->philos)
 		return (-1);
 	i = -1;
